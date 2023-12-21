@@ -21,6 +21,7 @@ int GamePlay::getScore()
 
 void GamePlay::gameLoop()
 {
+    setSnakeInitPosition();
     while (!gameOver)
     {
         board->draw();

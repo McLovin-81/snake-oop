@@ -1,12 +1,12 @@
 #include "gameBoard.h"
 
-#include <iostream>
-
 
 GameBoard::GameBoard()
 {
     width = 25;
     height = 15;
+
+    snake = new Snake();
 }
 
 int GameBoard::getHeight()
@@ -40,6 +40,11 @@ void GameBoard::draw()
             if (j == 0 || j == width -1)
             {
                 printw("#");
+            }
+            else if (i == snake->getYposition() && j == snake->getXposition())
+            {
+                //printw("%c", snake->getDesign());
+                printw("O");
             }
             else
             {

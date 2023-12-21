@@ -2,12 +2,15 @@
 #define GAME_BOARD_H
 
 #include <ncurses.h>
+#include "snake.h"
 
 class GameBoard
 {
     private:
         int height;
         int width;
+
+        Snake* snake;
     
     public:
         GameBoard();

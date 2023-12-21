@@ -5,7 +5,7 @@
 class Snake
 {
     private:
-        char design;
+        const char design = 'O';
         int length;
 
         enum Direction {STOP, UP, DOWN, RIGTH, LEFT};
@@ -19,6 +19,11 @@ class Snake
         Snake();
         void setXposition(int x);
         void setYposition(int y);
+
+        int getXposition();
+        int getYposition();
+
+        char getDesign() const;
 };
 
 
