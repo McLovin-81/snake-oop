@@ -5,8 +5,8 @@
 
 GameBoard::GameBoard()
 {
-    height = 20;
-    width = 20;
+    width = 25;
+    height = 15;
 }
 
 int GameBoard::getHeight()
@@ -21,6 +21,7 @@ int GameBoard::getWidth()
 
 void GameBoard::draw()
 {
+    clear();
     initscr();
     noecho();
     nodelay(stdscr, true); // Make getch non-blocking
@@ -45,6 +46,7 @@ void GameBoard::draw()
                 printw(" ");
             }
         }
+        printw("\n");
     }
 
     for (int i = 0; i < width; i++)
@@ -55,6 +57,5 @@ void GameBoard::draw()
     printw("\n");
 
     refresh(); // Refresh the screen
-    //getch();   // Wait for user input
-
+    //getch();   // Wait for user input -> where do i need this?
 }

@@ -15,9 +15,10 @@ class Snake
         int xPosition;
         int yPosition;
 
-
     public:
         Snake();
+        void setXposition(int x);
+        void setYposition(int y);
 };
 
 

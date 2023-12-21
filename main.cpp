@@ -1,22 +1,19 @@
 #include <iostream>
 #include <ncurses.h>
 
-#include "gameBoard.cpp"
+#include "gameBoard.cpp" // TODO: Why do i need this include?
 #include "gamePlay.cpp"
 
 
 int main()
 {
-    GameBoard board;
     GamePlay gamePlay;
 
-    while (!gamePlay.getGameOver())
-    {
-        clear(); // Clear the screen
-        board.draw();
-    }
-    
+    gamePlay.gameLoop();
 
-    endwin(); // End ncurses mode
     return 0;
 }
+
+/*
+If the snake has always the same start point and the snakes knows the parameter width and heigth
+i dont need to print the board in a loop -> just the snakes position?*/
