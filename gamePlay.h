@@ -2,7 +2,7 @@
 #define GAME_PLAY_H
 
 #include "gameBoard.h"
-#include "snake.h"
+#include "snake.cpp"
 
 class GamePlay
 {
@@ -10,8 +10,8 @@ class GamePlay
         bool gameOver;
         int score;
 
-        GameBoard board;
-        Snake snake;
+        GameBoard* board;
+        Snake* snake;
 
     public:
         GamePlay();

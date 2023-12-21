@@ -7,9 +7,9 @@
 
 int main()
 {
-    GamePlay gamePlay;
+    GamePlay* gamePlay = new GamePlay();
 
-    gamePlay.gameLoop();
+    gamePlay->gameLoop();
 
     return 0;
 }

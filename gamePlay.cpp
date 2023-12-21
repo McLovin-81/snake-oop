@@ -4,6 +4,9 @@ GamePlay::GamePlay()
 {
     gameOver = false;
     score = 0;
+
+    board = new GameBoard();
+    snake = new Snake();
 }
 
 bool GamePlay::getGameOver()
@@ -20,13 +23,13 @@ void GamePlay::gameLoop()
 {
     while (!gameOver)
     {
-        board.draw();
+        board->draw();
     }
     endwin(); // End ncurses mode from GameBord -> draw
 }
 
 void GamePlay::setSnakeInitPosition()
 {
-    snake.setXposition(board.getWidth() / 2);
-    snake.setYposition(board.getHeight() / 2);
+    snake->setXposition(board->getWidth() / 2);
+    snake->setYposition(board->getHeight() / 2);
 }
