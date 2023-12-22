@@ -3,6 +3,7 @@
 
 #include "gameBoard.h"
 #include "snake.cpp"
+#include "input.cpp"
 
 class GamePlay
 {
@@ -11,14 +12,12 @@ class GamePlay
         int score;
 
         GameBoard* board;
-        Snake* snake;
 
     public:
         GamePlay();
         bool getGameOver();
         int getScore();
         void gameLoop();
-        void setSnakeInitPosition();
 };
 
 #endif // GAME_PLAY_H

@@ -7,6 +7,8 @@ GameBoard::GameBoard()
     height = 15;
 
     snake = new Snake();
+    snake->setXposition(width / 2);
+    snake->setYposition(height / 2);
 }
 
 int GameBoard::getHeight()
@@ -43,8 +45,7 @@ void GameBoard::draw()
             }
             else if (i == snake->getYposition() && j == snake->getXposition())
             {
-                //printw("%c", snake->getDesign());
-                printw("O");
+                printw("%c", snake->getDesign()); // "%c" -> Indicate that the corresponding argument should be interpreted as a character.
             }
             else
             {
@@ -63,4 +64,10 @@ void GameBoard::draw()
 
     refresh(); // Refresh the screen
     //getch();   // Wait for user input -> where do i need this?
+}
+
+
+Snake* GameBoard::getSanke()
+{
+    return this->snake;
 }

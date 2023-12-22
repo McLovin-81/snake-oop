@@ -6,7 +6,6 @@ GamePlay::GamePlay()
     score = 0;
 
     board = new GameBoard();
-    snake = new Snake();
 }
 
 bool GamePlay::getGameOver()
@@ -21,16 +20,10 @@ int GamePlay::getScore()
 
 void GamePlay::gameLoop()
 {
-    setSnakeInitPosition();
     while (!gameOver)
     {
         board->draw();
+        Input::input(board->getSanke());
     }
     endwin(); // End ncurses mode from GameBord -> draw
-}
-
-void GamePlay::setSnakeInitPosition()
-{
-    snake->setXposition(board->getWidth() / 2);
-    snake->setYposition(board->getHeight() / 2);
 }

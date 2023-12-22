@@ -18,6 +18,8 @@ class GameBoard
         int getWidth();
 
         void draw();
+
+        Snake* getSanke();
 };
 
 #endif // GAME_BOARD_H

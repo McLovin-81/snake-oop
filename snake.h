@@ -2,16 +2,16 @@
 #define SNAKE_H
 
 
+enum Direction {STOP, UP, DOWN, RIGTH, LEFT};
+
 class Snake
 {
     private:
-        const char design = 'O';
+        char design;
         int length;
 
-        enum Direction {STOP, UP, DOWN, RIGTH, LEFT};
         Direction direction;
 
-        // Possition. Is that correct here?
         int xPosition;
         int yPosition;
 
@@ -19,11 +19,12 @@ class Snake
         Snake();
         void setXposition(int x);
         void setYposition(int y);
+        void setDirection(Direction direction);
 
         int getXposition();
         int getYposition();
 
-        char getDesign() const;
+        char getDesign();
 };
 
 
