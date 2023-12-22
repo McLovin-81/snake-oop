@@ -18,6 +18,7 @@ class GamePlay
         bool getGameOver();
         int getScore();
         void gameLoop();
+        void logic();
 };
 
 #endif // GAME_PLAY_H

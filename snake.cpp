@@ -23,6 +23,11 @@ void Snake::setDirection(Direction direction)
     this->direction = direction;
 }
 
+Direction Snake::getDirection()
+{
+    return this->direction;
+}
+
 int Snake::getXposition()
 {
     return this->xPosition;

@@ -27,3 +27,23 @@ void GamePlay::gameLoop()
     }
     endwin(); // End ncurses mode from GameBord -> draw
 }
+
+void GamePlay::logic()
+{
+    switch (board->getSanke()->getDirection())
+    {
+        case UP:
+            board->getSanke()->setYposition(board->getSanke()->getYposition() -1); // recator this mess
+            break;
+        case DOWN:
+            board->getSanke()->setYposition(board->getSanke()->getYposition() +1);
+            break;
+        case RIGHT:
+            board->getSanke()->setXposition(board->getSanke()->getXposition() +1);
+            break;
+        case LEFT:
+            board->getSanke()->setXposition(board->getSanke()->getXposition() -1);
+        default:
+            break;
+    }
+}

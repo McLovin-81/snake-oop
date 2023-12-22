@@ -2,7 +2,7 @@
 #define SNAKE_H
 
 
-enum Direction {STOP, UP, DOWN, RIGTH, LEFT};
+enum Direction {STOP, UP, DOWN, RIGHT, LEFT};
 
 class Snake
 {
@@ -21,6 +21,7 @@ class Snake
         void setYposition(int y);
         void setDirection(Direction direction);
 
+        Direction getDirection();
         int getXposition();
         int getYposition();
 
