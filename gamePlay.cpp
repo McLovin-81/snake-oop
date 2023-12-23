@@ -24,6 +24,7 @@ void GamePlay::gameLoop()
     {
         board->draw();
         Input::input(board->getSanke());
+        logic();
     }
     endwin(); // End ncurses mode from GameBord -> draw
 }

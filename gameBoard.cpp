@@ -63,7 +63,7 @@ void GameBoard::draw()
     printw("\n");
 
     refresh(); // Refresh the screen
-    printw("%c", snake->getDirection());
+    printw("%d", snake->getDirection()); // TODO: Delete this
     //getch();   // Wait for user input -> where do i need this?
 }
 

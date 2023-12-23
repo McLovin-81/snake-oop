@@ -14,10 +14,10 @@ void Input::input(Snake* snake)
             snake->setDirection(DOWN);
             break;
         case 'd':
-            snake->setDirection(LEFT);;
+            snake->setDirection(RIGHT);;
             break;
         case 'a':
-            snake->setDirection(RIGHT);
+            snake->setDirection(LEFT);
         default:
             break;
     }
