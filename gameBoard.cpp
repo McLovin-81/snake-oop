@@ -43,6 +43,7 @@ void GameBoard::draw()
             {
                 printw("#");
             }
+            // Snake rules // 
             else if (i == snake->getYposition() && j == snake->getXposition())
             {
                 printw("%c", snake->getDesign()); // "%c" -> Indicate that the corresponding argument should be interpreted as a character.

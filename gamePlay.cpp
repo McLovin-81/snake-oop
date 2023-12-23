@@ -31,7 +31,8 @@ void GamePlay::gameLoop()
 
 void GamePlay::logic()
 {
-    switch (board->getSanke()->getDirection())
+    Direction snakesDirection = board->getSanke()->getDirection();
+    switch (snakesDirection)
     {
         case UP:
             board->getSanke()->setYposition(board->getSanke()->getYposition() -1); // recator this mess
