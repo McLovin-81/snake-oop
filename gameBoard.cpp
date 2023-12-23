@@ -65,6 +65,8 @@ void GameBoard::draw()
 
     refresh(); // Refresh the screen
     printw("%d", snake->getDirection()); // TODO: Delete this
+    printw(" ");
+    printw("%d", getSanke()->getXposition());
     //getch();   // Wait for user input -> where do i need this?
 }
 

@@ -32,6 +32,7 @@ void GamePlay::gameLoop()
 void GamePlay::logic()
 {
     Direction snakesDirection = board->getSanke()->getDirection();
+
     switch (snakesDirection)
     {
         case UP:
@@ -47,5 +48,15 @@ void GamePlay::logic()
             board->getSanke()->setXposition(board->getSanke()->getXposition() -1);
         default:
             break;
+    }
+
+    if (UP)
+    {
+        gameOver = true;
+    }
+
+    if (board->getSanke()->getXposition() <= 0 || board->getSanke()->getXposition() == board->getWidth() -1)
+    {
+        gameOver = true;
     }
 }

@@ -5,7 +5,7 @@ void Input::input(Snake* snake)
     char ch = getch();
     std::cin >> ch;
 
-        switch (ch)
+    switch (ch)
     {
         case 'w':
             snake->setDirection(UP);
@@ -21,5 +21,4 @@ void Input::input(Snake* snake)
         default:
             break;
     }
-
 }
