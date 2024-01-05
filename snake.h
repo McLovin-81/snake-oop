@@ -7,7 +7,7 @@ enum Direction {STOP, UP, DOWN, RIGHT, LEFT};
 class Snake
 {
     private:
-        char design;
+        //char design;
         int length;
 
         Direction direction;
@@ -16,6 +16,7 @@ class Snake
         int yPosition;
 
     public:
+    char design;
         Snake();
         void setXposition(int x);
         void setYposition(int y);

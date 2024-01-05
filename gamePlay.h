@@ -8,6 +8,8 @@
 #include "snake.cpp"
 #include "input.cpp"
 
+#include <ncurses.h> // TODO: Delete
+
 class GamePlay
 {
     private:

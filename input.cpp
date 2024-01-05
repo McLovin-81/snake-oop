@@ -3,7 +3,7 @@
 void Input::input(Snake* snake)
 {
     char ch = getch();
-    std::cin >> ch;
+    //std::cin >> ch;
 
     switch (ch)
     {
