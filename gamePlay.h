@@ -1,9 +1,6 @@
 #ifndef GAME_PLAY_H
 #define GAME_PLAY_H
 
-#include <thread>  // For std::this_thread::sleep_for
-#include <chrono>  // For std::chrono::milliseconds
-
 #include "gameBoard.h"
 #include "snake.cpp"
 #include "input.cpp"
@@ -14,6 +11,7 @@ class GamePlay
     private:
         bool gameOver;
         int score;
+        int frameDelay;
 
         GameBoard* board;
 

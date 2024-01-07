@@ -1,22 +1,26 @@
 #include "gamePlay.h"
 
+
 GamePlay::GamePlay()
 {
     gameOver = false;
     score = 0;
-
+    frameDelay = 150;
     board = new GameBoard();
 }
+
 
 bool GamePlay::getGameOver()
 {
     return this->gameOver;
 }
 
+
 int GamePlay::getScore()
 {
     return this->score;
 }
+
 
 void GamePlay::gameLoop()
 {
@@ -29,10 +33,10 @@ void GamePlay::gameLoop()
     endwin(); // End ncurses mode from GameBord -> draw
 }
 
+
 void GamePlay::logic()
 {
     Direction snakesDirection = board->getSanke()->getDirection();
-    const int frameDelay = 80;
     napms(frameDelay); // TODO: Delete
 
     switch (snakesDirection)
