@@ -5,7 +5,7 @@ GamePlay::GamePlay()
 {
     gameOver = false;
     score = 0;
-    frameDelay = 150;
+    frameDelay = 100;
     board = new GameBoard();
 }
 
@@ -28,16 +28,19 @@ void GamePlay::gameLoop()
     {
         board->draw();
         Input::input(board->getSanke());
-        logic();
+        runDirection();
+        collision();
     }
     endwin(); // End ncurses mode from GameBord -> draw
+
+    gameOverScreen();
 }
 
 
-void GamePlay::logic()
+void GamePlay::runDirection()
 {
     Direction snakesDirection = board->getSanke()->getDirection();
-    napms(frameDelay); // TODO: Delete
+    napms(frameDelay); // TODO: Put it in another place
 
     switch (snakesDirection)
     {
@@ -55,10 +58,22 @@ void GamePlay::logic()
         default:
             break;
     }
+}
 
-    if (board->getSanke()->getXposition() <= 0 || board->getSanke()->getXposition() == board->getWidth() -1)
+
+void GamePlay::collision()
+{
+    if (board->getSanke()->getXposition() <= 0 || board->getSanke()->getXposition() == board->getWidth() -1
+        || board->getSanke()->getYposition() <= -1 || board->getSanke()->getYposition() == board->getHeight())
     {
         gameOver = true;
     }
+}
 
+
+void GamePlay::gameOverScreen()
+{
+    std::cout << "-----------------\n";
+    std::cout << "|   Game Over   |\n";
+    std::cout << "-----------------\n";
 }

@@ -4,6 +4,7 @@
 #include <ncurses.h>
 
 #include "snake.h"
+#include "fruit.h"
 
 class GameBoard
 {
@@ -12,6 +13,7 @@ class GameBoard
         int width;
 
         Snake* snake;
+        Fruit* fruit;
     
     public:
         GameBoard();

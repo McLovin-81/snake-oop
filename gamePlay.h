@@ -20,18 +20,9 @@ class GamePlay
         bool getGameOver();
         int getScore();
         void gameLoop();
-        void logic();
-
-        //TODO: Add for Nicolas
-        /*
-                gameOver = true;
-                void printGameOver() {
-            std::cout << "-----------------\n";
-            std::cout << "|   Game Over   |\n";
-            std::cout << "-----------------\n";
-}
-*/
-
+        void runDirection();
+        void gameOverScreen();
+        void collision();
 };
 
 #endif // GAME_PLAY_H

@@ -13,5 +13,3 @@ int main()
 
     return 0;
 }
-
-// Can i make a container class with all the diferents objects from all clases.

@@ -43,7 +43,7 @@ void GameBoard::draw()
             {
                 printw("#");
             }
-            // Snake rules // 
+
             else if (i == snake->getYposition() && j == snake->getXposition())
             {
                 printw("%c", snake->getDesign()); // "%c" -> Indicate that the corresponding argument should be interpreted as a character.
@@ -64,10 +64,11 @@ void GameBoard::draw()
     printw("\n");
 
     refresh(); // Refresh the screen
-    printw("%d", snake->getDirection()); // TODO: Delete this
-    printw(" ");
-    printw("%d", getSanke()->getXposition());
-    //getch();   // Wait for user input -> where do i need this?
+
+    // Print some information. Can be deleted later
+    printw("Direction: %d", snake->getDirection()); // TODO: Delete
+    printw("\n"); // TODO: Delete
+    printw("X position: %d, Y position: %d", getSanke()->getXposition(), getSanke()->getYposition()); // TODO: Delete
 }
 
 
