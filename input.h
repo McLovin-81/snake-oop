@@ -3,6 +3,8 @@
 
 #include "gameBoard.h"
 
+#include <iostream>
+
 
 class Input
 {
