@@ -22,21 +22,6 @@ int GamePlay::getScore()
 }
 
 
-void GamePlay::gameLoop()
-{
-    while (!gameOver)
-    {
-        board->draw();
-        Input::input(board->getSanke());
-        runDirection();
-        collision();
-    }
-    endwin(); // End ncurses mode from GameBord -> draw
-
-    gameOverScreen();
-}
-
-
 void GamePlay::runDirection()
 {
     Direction snakesDirection = board->getSanke()->getDirection();
@@ -76,4 +61,19 @@ void GamePlay::gameOverScreen()
     std::cout << "-----------------\n";
     std::cout << "|   Game Over   |\n";
     std::cout << "-----------------\n";
+}
+
+
+void GamePlay::gameLoop()
+{
+    while (!this->gameOver)
+    {
+        board->draw();
+        Input::input(board->getSanke());
+        runDirection();
+        collision();
+    }
+    endwin(); // End ncurses mode from GameBord -> draw
+
+    gameOverScreen();
 }

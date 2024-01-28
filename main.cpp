@@ -1,6 +1,3 @@
-#include <iostream>
-#include <ncurses.h>
-
 #include "gameBoard.cpp" // TODO: Why do i need this include?
 #include "gamePlay.cpp"
 

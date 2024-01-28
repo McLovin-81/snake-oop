@@ -1,6 +1,5 @@
 #include "input.h"
 
-//#include "iostream"
 
 void Input::input(Snake* snake)
 {

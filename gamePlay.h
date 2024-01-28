@@ -19,10 +19,10 @@ class GamePlay
         GamePlay();
         bool getGameOver();
         int getScore();
-        void gameLoop();
         void runDirection();
         void gameOverScreen();
         void collision();
+        void gameLoop();
 };
 
 #endif // GAME_PLAY_H
