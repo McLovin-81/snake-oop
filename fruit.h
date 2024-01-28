@@ -1,9 +1,6 @@
 #ifndef FRUIT_H
 #define FRUIT_H
 
-#include "gameBoard.h" // Needed to get the width and heigth 
-#include <random>
-
 
 class Fruit
 {
@@ -11,12 +8,12 @@ class Fruit
         char design;
         int xPosition;
         int yPosition;
-        // GameBoard* gb;
     
     public:
         Fruit();
-        void setXposition();
-        void setYposition();
+        char getDesign();
+        void setXposition(int x);
+        void setYposition(int y);
         int getXposition();
         int getYposition();
 };

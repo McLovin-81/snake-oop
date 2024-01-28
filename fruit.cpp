@@ -4,30 +4,18 @@
 Fruit::Fruit()
 {
     this->design = 'F';
-    setXposition();
-    setYposition();
-
-    //gb = new GameBoard();
 }
 
 
-void Fruit::setXposition()
+void Fruit::setXposition(int x)
 {
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> distrib(1, gb->getWidth() -1); // replace the numbers with width min and witdh max
-
-    this->xPosition = distrib(gen);
+    this->xPosition = x;
 }
 
 
-void Fruit::setYposition()
+void Fruit::setYposition(int y)
 {
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> distrib(1, gb->getHeight() -1); // replace the numbers with heigth min and heigth max
-
-    this->yPosition = distrib(gen);
+    this->yPosition = y;
 }
 
 
@@ -40,4 +28,10 @@ int Fruit::getXposition()
 int Fruit::getYposition()
 {
     return this-> yPosition;
+}
+
+
+char Fruit::getDesign()
+{
+    return this->design;
 }

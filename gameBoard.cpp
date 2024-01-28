@@ -7,8 +7,11 @@ GameBoard::GameBoard()
     height = 15;
 
     snake = new Snake();
+    fruit = new Fruit();
     snake->setXposition(width / 2);
     snake->setYposition(height / 2);
+    fruit->setXposition(3);
+    fruit->setYposition(3);
 }
 
 int GameBoard::getHeight()
@@ -43,10 +46,15 @@ void GameBoard::draw()
             {
                 printw("#");
             }
-
+            // Print snake head
             else if (i == snake->getYposition() && j == snake->getXposition())
             {
                 printw("%c", snake->getDesign()); // "%c" -> Indicate that the corresponding argument should be interpreted as a character.
+            }
+            // Print Fruit
+            else if (i == fruit->getYposition() && j == fruit->getXposition())
+            {
+                printw("%c", fruit->getDesign());
             }
             else
             {
@@ -68,11 +76,17 @@ void GameBoard::draw()
     // Print some information. Can be deleted later
     printw("Direction: %d", snake->getDirection()); // TODO: Delete
     printw("\n"); // TODO: Delete
-    printw("X position: %d, Y position: %d", getSanke()->getXposition(), getSanke()->getYposition()); // TODO: Delete
+    printw("X position: %d, Y position: %d", getSnake()->getXposition(), getSnake()->getYposition()); // TODO: Delete
 }
 
 
-Snake* GameBoard::getSanke()
+Snake* GameBoard::getSnake()
 {
     return this->snake;
+}
+
+
+Fruit* GameBoard::getFruit()
+{
+    return this->fruit;
 }

@@ -1,6 +1,8 @@
 #ifndef GAME_PLAY_H
 #define GAME_PLAY_H
 
+#include <random>
+
 #include "gameBoard.h"
 #include "snake.cpp"
 #include "input.cpp"
