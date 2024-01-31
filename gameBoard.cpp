@@ -74,7 +74,7 @@ void GameBoard::draw()
     refresh(); // Refresh the screen
 
     // Print some information. Can be deleted later
-    printw("Direction: %d", snake->getDirection()); // TODO: Delete
+    printw("Direction: %d, Old direction: %d", snake->getDirection(), snake->getOldDirection()); // TODO: Delete
     printw("\n"); // TODO: Delete
     printw("X position: %d, Y position: %d", getSnake()->getXposition(), getSnake()->getYposition()); // TODO: Delete
 }
