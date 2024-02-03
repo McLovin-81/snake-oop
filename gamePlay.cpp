@@ -5,7 +5,7 @@ GamePlay::GamePlay()
 {
     gameOver = false;
     score = 0;
-    frameDelay = 300;
+    frameDelay = 50;
     board = new GameBoard();
 }
 
@@ -26,21 +26,53 @@ void GamePlay::runDirection()
 {
     Direction snakeDirection = board->getSnake()->getDirection();
     Direction snakeOldDirection = board->getSnake()->getOldDirection();
-    napms(frameDelay); // TODO: Put it in another place
+    
 
     switch (snakeDirection)
     {
         case UP:
-            board->getSnake()->setYposition(board->getSnake()->getYposition() -1); // refator this mess
+            if (snakeOldDirection == DOWN)
+            {
+                board->getSnake()->setYposition(board->getSnake()->getYposition() +1); // DOWN
+            }
+            else
+            {
+                board->getSnake()->setYposition(board->getSnake()->getYposition() -1); // UP
+                board->getSnake()->setOldDirection(snakeDirection);
+            }
             break;
         case DOWN:
-            board->getSnake()->setYposition(board->getSnake()->getYposition() +1);
+            if (snakeOldDirection == UP)
+            {
+                board->getSnake()->setYposition(board->getSnake()->getYposition() -1); // UP
+            }
+            else
+            {
+                board->getSnake()->setYposition(board->getSnake()->getYposition() +1); // DOWN
+                board->getSnake()->setOldDirection(snakeDirection);
+            }
             break;
         case RIGHT:
-            board->getSnake()->setXposition(board->getSnake()->getXposition() +1);
+            if (snakeOldDirection == LEFT)
+            {
+                board->getSnake()->setXposition(board->getSnake()->getXposition() -1); // LEFT
+            }
+            else
+            {
+                board->getSnake()->setXposition(board->getSnake()->getXposition() +1); // RIGHT
+                board->getSnake()->setOldDirection(snakeDirection);
+            }
             break;
         case LEFT:
-            board->getSnake()->setXposition(board->getSnake()->getXposition() -1);
+            if (snakeOldDirection == RIGHT)
+            {
+                board->getSnake()->setXposition(board->getSnake()->getXposition() +1); // RIGHT
+            }
+            else
+            {
+                board->getSnake()->setXposition(board->getSnake()->getXposition() -1); // LEFT
+                board->getSnake()->setOldDirection(snakeDirection);
+            }
         default:
             break;
     }
@@ -69,6 +101,7 @@ void GamePlay::gameLoop()
 {
     while (!this->gameOver)
     {
+        napms(frameDelay); // TODO: Put it in another place
         board->draw();
         Input::input(board->getSnake());
         runDirection();

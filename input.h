@@ -8,8 +8,12 @@
 
 class Input
 {
+    private:
+        static bool inputPressed;
     public:
-       static void input(Snake* snake); 
+       static void input(Snake* snake);
+       static bool isInputPressed();
+       static void setInputPressed(bool x);
 };
 
 

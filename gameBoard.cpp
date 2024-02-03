@@ -3,8 +3,8 @@
 
 GameBoard::GameBoard()
 {
-    width = 25;
-    height = 15;
+    width = 50;
+    height = 30;
 
     snake = new Snake();
     fruit = new Fruit();
@@ -77,6 +77,8 @@ void GameBoard::draw()
     printw("Direction: %d, Old direction: %d", snake->getDirection(), snake->getOldDirection()); // TODO: Delete
     printw("\n"); // TODO: Delete
     printw("X position: %d, Y position: %d", getSnake()->getXposition(), getSnake()->getYposition()); // TODO: Delete
+    printw("\n"); // TODO: Delete
+    printw("inputPressed: %d", Input::isInputPressed()); // TODO: Delete
 }
 
 

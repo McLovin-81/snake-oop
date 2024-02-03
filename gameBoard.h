@@ -6,6 +6,8 @@
 #include "snake.h"
 #include "fruit.cpp"
 
+#include "input.h" // Test;
+
 class GameBoard
 {
     private:
