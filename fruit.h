@@ -12,10 +12,10 @@ class Fruit
     public:
         Fruit();
         char getDesign();
-        void setXposition(int x);
-        void setYposition(int y);
         int getXposition();
         int getYposition();
+        void setXposition(int x);
+        void setYposition(int y);
 };
 
 

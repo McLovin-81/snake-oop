@@ -87,13 +87,48 @@ void GamePlay::gameLoop()
 {
     while (!this->gameOver)
     {
-        napms(50); // TODO: Put it in another place
+        napms(80); // TODO: Put it in another place
         board->draw();
         Input::input(board->getSnake());
         runDirection();
         collision();
+        generateNewFruit(); // TODO: Test
     }
     endwin(); // End ncurses mode from GameBord -> draw
 
     gameOverScreen();
+    scoreScreen();
+}
+
+
+
+//////////////NEW//////////////////////
+
+int GamePlay::getRandomNum(int range)
+{
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(2, range - 2); // Distribution from 2 to range - 2
+
+    return dis(gen);
+}
+
+
+void GamePlay::generateNewFruit() // And increase the score
+{
+    if (board->getSnake()->getXposition() == board->getFruit()->getXposition() && board->getSnake()->getYposition() == board->getFruit()->getYposition())
+    {
+        board->getFruit()->setXposition(getRandomNum(board->getWidth()));
+        board->getFruit()->setYposition(getRandomNum(board->getHeight()));
+
+        board->increaseScore(); // TODO: It must be called outside this function
+    }
+}
+
+
+void GamePlay::scoreScreen()
+{
+    std::cout << "-----------------\n";
+    std::cout << "   Score: " << board->getScore() << "   \n";
+    std::cout << "-----------------\n";
 }

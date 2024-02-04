@@ -7,18 +7,6 @@ Fruit::Fruit()
 }
 
 
-void Fruit::setXposition(int x)
-{
-    this->xPosition = x;
-}
-
-
-void Fruit::setYposition(int y)
-{
-    this->yPosition = y;
-}
-
-
 int Fruit::getXposition()
 {
     return this-> xPosition;
@@ -34,4 +22,16 @@ int Fruit::getYposition()
 char Fruit::getDesign()
 {
     return this->design;
+}
+
+
+void Fruit::setXposition(int x)
+{
+    this->xPosition = x;
+}
+
+
+void Fruit::setYposition(int y)
+{
+    this->yPosition = y;
 }
