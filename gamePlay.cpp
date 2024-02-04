@@ -4,21 +4,7 @@
 GamePlay::GamePlay()
 {
     gameOver = false;
-    score = 0;
-    frameDelay = 50;
     board = new GameBoard();
-}
-
-
-bool GamePlay::getGameOver()
-{
-    return this->gameOver;
-}
-
-
-int GamePlay::getScore()
-{
-    return this->score;
 }
 
 
@@ -101,7 +87,7 @@ void GamePlay::gameLoop()
 {
     while (!this->gameOver)
     {
-        napms(frameDelay); // TODO: Put it in another place
+        napms(50); // TODO: Put it in another place
         board->draw();
         Input::input(board->getSnake());
         runDirection();

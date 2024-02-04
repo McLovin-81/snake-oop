@@ -5,24 +5,52 @@ GameBoard::GameBoard()
 {
     width = 50;
     height = 30;
+    score = 0;
 
     snake = new Snake();
     fruit = new Fruit();
-    snake->setXposition(width / 2);
-    snake->setYposition(height / 2);
-    fruit->setXposition(3);
-    fruit->setYposition(3);
+    snake->setXposition(width / 2); // Start position
+    snake->setYposition(height / 2); // Start position
+    fruit->setXposition(width - 5); // Start position | TODO: Need random number
+    fruit->setYposition(height - 3); // Start position | TODO: Need random number
 }
+
 
 int GameBoard::getHeight()
 {
     return this->height;
 }
 
+
 int GameBoard::getWidth()
 {
     return this->width;
 }
+
+
+int GameBoard::getScore()
+{
+    return this->score;
+}
+
+
+Snake* GameBoard::getSnake()
+{
+    return this->snake;
+}
+
+
+Fruit* GameBoard::getFruit()
+{
+    return this->fruit;
+}
+
+
+void GameBoard::increaseScore()
+{
+    this->score += 10;
+}
+
 
 void GameBoard::draw()
 {
@@ -78,17 +106,5 @@ void GameBoard::draw()
     printw("\n"); // TODO: Delete
     printw("X position: %d, Y position: %d", getSnake()->getXposition(), getSnake()->getYposition()); // TODO: Delete
     printw("\n"); // TODO: Delete
-    printw("inputPressed: %d", Input::isInputPressed()); // TODO: Delete
-}
-
-
-Snake* GameBoard::getSnake()
-{
-    return this->snake;
-}
-
-
-Fruit* GameBoard::getFruit()
-{
-    return this->fruit;
+    printw("Score: %d", this->score); // TODO: Delete
 }

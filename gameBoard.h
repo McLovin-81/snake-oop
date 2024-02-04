@@ -6,13 +6,13 @@
 #include "snake.h"
 #include "fruit.cpp"
 
-#include "input.h" // Test;
 
 class GameBoard
 {
     private:
         int height;
         int width;
+        int score;
 
         Snake* snake;
         Fruit* fruit;
@@ -21,10 +21,11 @@ class GameBoard
         GameBoard();
         int getHeight();
         int getWidth();
-        void draw();
-
+        int getScore();
         Snake* getSnake();
         Fruit* getFruit();
+        void increaseScore();
+        void draw();
 };
 
 #endif // GAME_BOARD_H

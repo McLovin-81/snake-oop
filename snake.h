@@ -11,7 +11,7 @@ class Snake
         int length;
 
         Direction direction;
-        Direction oldDirection; // TODO: Test
+        Direction oldDirection;
 
         int xPosition;
         int yPosition;
@@ -21,13 +21,12 @@ class Snake
         void setXposition(int x);
         void setYposition(int y);
         void setDirection(Direction direction);
-        void setOldDirection(Direction direction); // TODO: Test
+        void setOldDirection(Direction direction);
 
         Direction getDirection();
-        Direction getOldDirection(); // TODO: Test
+        Direction getOldDirection();
         int getXposition();
         int getYposition();
-
         char getDesign();
 };
 
