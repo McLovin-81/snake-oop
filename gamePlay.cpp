@@ -65,6 +65,14 @@ void GamePlay::runDirection()
 }
 
 
+void GamePlay::gameOverScreen()
+{
+    std::cout << "-----------------\n";
+    std::cout << "|   Game Over   |\n";
+    std::cout << "-----------------\n";
+}
+
+
 void GamePlay::collision()
 {
     if (board->getSnake()->getXposition() <= 0 || board->getSnake()->getXposition() == board->getWidth() -1
@@ -75,10 +83,39 @@ void GamePlay::collision()
 }
 
 
-void GamePlay::gameOverScreen()
+int GamePlay::getRandomNum(int range)
+{
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(2, range - 2); // Distribution from 2 to range - 2
+
+    return dis(gen);
+}
+
+
+bool GamePlay::checkIfEaten() // And increase the score
+{
+    if (board->getSnake()->getXposition() == board->getFruit()->getXposition() && board->getSnake()->getYposition() == board->getFruit()->getYposition())
+    {
+        return true;
+    }
+    return false;
+}
+
+
+void GamePlay::doWhenEaten()
+{
+    board->getFruit()->setXposition(getRandomNum(board->getWidth()));
+    board->getFruit()->setYposition(getRandomNum(board->getHeight()));
+
+    board->increaseScore();
+}
+
+
+void GamePlay::scoreScreen()
 {
     std::cout << "-----------------\n";
-    std::cout << "|   Game Over   |\n";
+    std::cout << "   Score: " << board->getScore() << "   \n";
     std::cout << "-----------------\n";
 }
 
@@ -92,43 +129,13 @@ void GamePlay::gameLoop()
         Input::input(board->getSnake());
         runDirection();
         collision();
-        generateNewFruit(); // TODO: Test
+        if (checkIfEaten())
+        {
+            doWhenEaten();
+        }
     }
     endwin(); // End ncurses mode from GameBord -> draw
 
     gameOverScreen();
     scoreScreen();
-}
-
-
-
-//////////////NEW//////////////////////
-
-int GamePlay::getRandomNum(int range)
-{
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dis(2, range - 2); // Distribution from 2 to range - 2
-
-    return dis(gen);
-}
-
-
-void GamePlay::generateNewFruit() // And increase the score
-{
-    if (board->getSnake()->getXposition() == board->getFruit()->getXposition() && board->getSnake()->getYposition() == board->getFruit()->getYposition())
-    {
-        board->getFruit()->setXposition(getRandomNum(board->getWidth()));
-        board->getFruit()->setYposition(getRandomNum(board->getHeight()));
-
-        board->increaseScore(); // TODO: It must be called outside this function
-    }
-}
-
-
-void GamePlay::scoreScreen()
-{
-    std::cout << "-----------------\n";
-    std::cout << "   Score: " << board->getScore() << "   \n";
-    std::cout << "-----------------\n";
 }

@@ -20,10 +20,9 @@ class GamePlay
         void runDirection();
         void gameOverScreen();
         void collision();
-
-        ///NEW///
         int getRandomNum(int range);
-        void generateNewFruit();
+        bool checkIfEaten();
+        void doWhenEaten();
         void scoreScreen();
         
         void gameLoop();

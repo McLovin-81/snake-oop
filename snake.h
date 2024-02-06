@@ -13,8 +13,8 @@ class Snake
         Direction direction;
         Direction oldDirection;
 
-        int xPosition;
-        int yPosition;
+        int xPosition; // Change to vector
+        int yPosition; // Change to vector
 
     public:
         Snake();
