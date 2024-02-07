@@ -4,7 +4,7 @@
 Snake::Snake()
 {
     design = 'O';
-    length = 0; // TODO: need to increase during the code is running
+    length = 0;
     direction = STOP;
     oldDirection = STOP;
 }
@@ -64,9 +64,10 @@ char Snake::getDesign()
 }
 
 
-void Snake::setCoordinate(int x, int y)
+void Snake::setNewCoordinate(int x, int y)
 {
     coordinates.push_back(std::make_pair(x, y));
+    increaseLength();
 }
 
 
@@ -81,3 +82,8 @@ void Snake::increaseLength()
     this->length += 1;
 }
 
+
+int Snake::getLength()
+{
+    return this->length;
+}

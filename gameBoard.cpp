@@ -11,7 +11,7 @@ GameBoard::GameBoard()
     fruit = new Fruit();
     //snake->setXposition(width / 2); // Start position
     //snake->setYposition(height / 2); // Start position
-    snake->setCoordinate(width /2, height /2);
+    snake->setNewCoordinate(width / 2, height / 2);
     fruit->setXposition(width - 5); // Start position | TODO: Need random number
     fruit->setYposition(height - 3); // Start position | TODO: Need random number
 }
@@ -78,9 +78,10 @@ void GameBoard::draw()
 
             // Print snake
             //else if (i == snake->getYposition() && j == snake->getXposition())
-            else if (i == snake->getCoordinateVector()[0].second && j == snake->getCoordinateVector()[0].first)
+            else if (i == snake->getCoordinateVector()[snake->getLength() -1].second && j == snake->getCoordinateVector()[snake->getLength() -1].first)
             {
                 printw("%c", snake->getDesign()); // "%c" -> Indicate that the corresponding argument should be interpreted as a character.
+                
             }
 
 
@@ -108,10 +109,18 @@ void GameBoard::draw()
 
     refresh(); // Refresh the screen
 
+    printw("Score: %d", this->score);
+    printw("\n");
+
     // Print some information. Can be deleted later
     printw("Direction: %d, Old direction: %d", snake->getDirection(), snake->getOldDirection()); // TODO: Delete
     printw("\n"); // TODO: Delete
-    //printw("X position: %d, Y position: %d", getSnake()->getXposition(), getSnake()->getYposition()); // TODO: Delete
+    printw("Snake length: %d", snake->getLength()); // TODO: Delete
     printw("\n"); // TODO: Delete
-    printw("Score: %d", this->score); // TODO: Delete
+
+    for (auto coordinatePair : snake->getCoordinateVector())
+    {
+        printw("(%d, %d)", coordinatePair.first, coordinatePair.second);
+    }
+
 }
