@@ -13,13 +13,13 @@ void GamePlay::runDirection()
     Direction snakeDirection = board->getSnake()->getDirection();
     Direction snakeOldDirection = board->getSnake()->getOldDirection();
     
-        if (board->getSnake()->getLength() > 1)
+    if (board->getSnake()->getLength() > 1)
+    {
+        for (int i = board->getSnake()->getLength() - 1; i > 0; i--)
         {
-            for (int i = board->getSnake()->getLength() - 1; i > 0; i--)
-            {
-                board->getSnake()->getCoordinateVector()[i] = board->getSnake()->getCoordinateVector()[i-1];
-            }
+            board->getSnake()->getCoordinateVector()[i] = board->getSnake()->getCoordinateVector()[i-1];
         }
+    }
 
     switch (snakeDirection)
     {
@@ -81,11 +81,24 @@ void GamePlay::gameOverScreen()
 
 
 void GamePlay::collision()
-{ // TODO: Dont need < 0 or < -1?
-    if (board->getSnake()->getCoordinateVector()[0].first <= 0 || board->getSnake()->getCoordinateVector()[0].first == board->getWidth() -1
-        || board->getSnake()->getCoordinateVector()[0].second <= -1 || board->getSnake()->getCoordinateVector()[0].second == board->getHeight())
+{
+    std::vector<std::pair<int, int> > coordinates = board->getSnake()->getCoordinateVector();
+    std::pair<int, int> snakeHead = board->getSnake()->getCoordinateVector()[0];
+    int snakeLength = board->getSnake()->getLength();
+
+    if (board->getSnake()->getCoordinateVector()[0].first == 0 || board->getSnake()->getCoordinateVector()[0].first == board->getWidth() -1
+        || board->getSnake()->getCoordinateVector()[0].second == -1 || board->getSnake()->getCoordinateVector()[0].second == board->getHeight())
     {
         gameOver = true;
+    }
+
+    for (int i = 1; i < snakeLength -1; i++)
+    {
+        if (snakeHead == coordinates[i])
+        {
+            gameOver = true;
+            break;
+        }
     }
 }
 
@@ -132,7 +145,7 @@ void GamePlay::scoreScreen()
 
 void GamePlay::gameLoop()
 {
-    while (!this->gameOver)
+    while (!this->gameOver) // TODO: try do while
     {
         napms(80); // TODO: Put it in another place
         board->draw();

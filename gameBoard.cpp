@@ -3,8 +3,8 @@
 
 GameBoard::GameBoard()
 {
-    width = 50;
-    height = 30;
+    width = 60;
+    height = 20;
     score = 0;
 
     snake = new Snake();
