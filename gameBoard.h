@@ -29,4 +29,3 @@ class GameBoard
 };
 
 #endif // GAME_BOARD_H
-

@@ -6,8 +6,8 @@ class Fruit
 {
     private:
         char design;
-        int xPosition;
-        int yPosition;
+        int xPosition; // TODO: Change to pair
+        int yPosition; // TODO: Change to pair
     
     public:
         Fruit();

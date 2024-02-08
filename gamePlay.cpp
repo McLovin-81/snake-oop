@@ -21,23 +21,15 @@ void GamePlay::runDirection()
             }
         }
 
-// TODO: Fix the other directions
     switch (snakeDirection)
     {
-
-
-
         case UP:
             if (snakeOldDirection == DOWN)
             {
-                // board->getSnake()->setYposition(board->getSnake()->getYposition() +1); // DOWN
                 board->getSnake()->getCoordinateVector()[0].second++;
             }
             else
             {
-                //board->getSnake()->setYposition(board->getSnake()->getYposition() -1); // UP
-                //board->getSnake()->setOldDirection(snakeDirection);
-
                 board->getSnake()->getCoordinateVector()[0].second--;
                 board->getSnake()->setOldDirection(snakeDirection);
             }
@@ -45,12 +37,10 @@ void GamePlay::runDirection()
         case DOWN:
             if (snakeOldDirection == UP)
             {
-                //board->getSnake()->setYposition(board->getSnake()->getYposition() -1); // UP
                 board->getSnake()->getCoordinateVector()[0].second--;
             }
             else
             {
-                //board->getSnake()->setYposition(board->getSnake()->getYposition() +1); // DOWN
                 board->getSnake()->getCoordinateVector()[0].second++;
                 board->getSnake()->setOldDirection(snakeDirection);
             }
@@ -58,12 +48,10 @@ void GamePlay::runDirection()
         case RIGHT:
             if (snakeOldDirection == LEFT)
             {
-                //board->getSnake()->setXposition(board->getSnake()->getXposition() -1); // LEFT
                 board->getSnake()->getCoordinateVector()[0].first--;
             }
             else
             {
-                //board->getSnake()->setXposition(board->getSnake()->getXposition() +1); // RIGHT
                 board->getSnake()->getCoordinateVector()[0].first++;
                 board->getSnake()->setOldDirection(snakeDirection);
             }
@@ -71,12 +59,10 @@ void GamePlay::runDirection()
         case LEFT:
             if (snakeOldDirection == RIGHT)
             {
-                //board->getSnake()->setXposition(board->getSnake()->getXposition() +1); // RIGHT
                 board->getSnake()->getCoordinateVector()[0].first++;
             }
             else
             {
-                //board->getSnake()->setXposition(board->getSnake()->getXposition() -1); // LEFT
                 board->getSnake()->getCoordinateVector()[0].first--;
                 board->getSnake()->setOldDirection(snakeDirection);
             }
@@ -96,8 +82,6 @@ void GamePlay::gameOverScreen()
 
 void GamePlay::collision()
 { // TODO: Dont need < 0 or < -1?
-    // if (board->getSnake()->getXposition() <= 0 || board->getSnake()->getXposition() == board->getWidth() -1
-    //    || board->getSnake()->getYposition() <= -1 || board->getSnake()->getYposition() == board->getHeight())
     if (board->getSnake()->getCoordinateVector()[0].first <= 0 || board->getSnake()->getCoordinateVector()[0].first == board->getWidth() -1
         || board->getSnake()->getCoordinateVector()[0].second <= -1 || board->getSnake()->getCoordinateVector()[0].second == board->getHeight())
     {
@@ -118,7 +102,6 @@ int GamePlay::getRandomNum(int range)
 
 bool GamePlay::checkIfEaten()
 {
-    //if (board->getSnake()->getXposition() == board->getFruit()->getXposition() && board->getSnake()->getYposition() == board->getFruit()->getYposition())
     if (board->getSnake()->getCoordinateVector()[0].first == board->getFruit()->getXposition()
         && board->getSnake()->getCoordinateVector()[0].second == board->getFruit()->getYposition())
     {
@@ -151,7 +134,7 @@ void GamePlay::gameLoop()
 {
     while (!this->gameOver)
     {
-        napms(500); // TODO: Put it in another place
+        napms(80); // TODO: Put it in another place
         board->draw();
         Input::input(board->getSnake());
         runDirection();

@@ -14,5 +14,4 @@ class Input
        static void input(Snake* snake);
 };
 
-
 #endif // INPUT_H

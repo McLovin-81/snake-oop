@@ -4,23 +4,17 @@
 Snake::Snake()
 {
     design = 'O';
+    bodyDesign = 'o';
     length = 0;
     direction = STOP;
     oldDirection = STOP;
 }
 
-/*
-void Snake::setXposition(int x)
-{
-    this->xPosition = x;
-}
 
-
-void Snake::setYposition(int y)
+char Snake::getBodyDesign()
 {
-    this->yPosition = y;
+    return this->bodyDesign;
 }
-*/
 
 
 void Snake::setDirection(Direction direction)
@@ -46,17 +40,6 @@ Direction Snake::getOldDirection()
     return this->oldDirection;
 }
 
-/*
-int Snake::getXposition()
-{
-    return this->xPosition;
-}
-
-int Snake::getYposition()
-{
-    return this->yPosition;
-}
-*/
 
 char Snake::getDesign()
 {

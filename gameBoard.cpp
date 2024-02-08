@@ -9,8 +9,6 @@ GameBoard::GameBoard()
 
     snake = new Snake();
     fruit = new Fruit();
-    //snake->setXposition(width / 2); // Start position
-    //snake->setYposition(height / 2); // Start position
     snake->setNewCoordinate(width / 2, height / 2);
     fruit->setXposition(width - 5); // Start position | TODO: Need random number
     fruit->setYposition(height - 3); // Start position | TODO: Need random number
@@ -59,6 +57,8 @@ void GameBoard::draw()
     initscr();
     noecho();
     nodelay(stdscr, true); // Make getch non-blocking
+    bool snakeFound;
+    bool fruitPrinted;
 
     for (int i = 0; i < width; i++)
     {
@@ -75,28 +75,34 @@ void GameBoard::draw()
             {
                 printw("#");
             }
-
-            // Print snake
-            //else if (i == snake->getYposition() && j == snake->getXposition())
-            else if (i == snake->getCoordinateVector()[snake->getLength() -1].second && j == snake->getCoordinateVector()[snake->getLength() -1].first)
-            {
-                printw("%c", snake->getDesign()); // "%c" -> Indicate that the corresponding argument should be interpreted as a character.
-                
-            }
-
-
-
-
-            // Print Fruit
-            else if (i == fruit->getYposition() && j == fruit->getXposition())
-            {
-                printw("%c", fruit->getDesign());
-            }
             else
             {
-                printw(" ");
+                snakeFound = false;
+                fruitPrinted = false;
+
+                for (auto coordinate : snake->getCoordinateVector())
+                {
+                    if (coordinate.first == j && coordinate.second == i)
+                    {
+                        printw("%c", snake->getDesign());
+                        snakeFound = true;
+                        break;
+                    }
+                }
+
+                if (i == fruit->getYposition() && j == fruit->getXposition())
+                {
+                    printw("%c", fruit->getDesign());
+                    fruitPrinted = true;
+                }
+
+                if (!snakeFound && !fruitPrinted)
+                {
+                    printw(" ");
+                }
             }
         }
+
         printw("\n");
     }
 
@@ -122,5 +128,4 @@ void GameBoard::draw()
     {
         printw("(%d, %d)", coordinatePair.first, coordinatePair.second);
     }
-
 }
