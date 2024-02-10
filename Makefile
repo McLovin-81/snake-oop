@@ -6,10 +6,12 @@ TARGET = $(SOURCE:.cpp=)
 
 CXX = g++
 
+CXXFLAGS = -std=c++17
+
 all: $(TARGET)
 $(TARGET): $(SOURCE)
 	@echo "Commpiling..."
-	@$(CXX) $(SOURCE) -o $(TARGET) -l $(LIBRARY)
+	@$(CXX) $(CXXFLAGS) $(SOURCE) -o $(TARGET) -l $(LIBRARY)
 
 run:
 	@./$(TARGET)
@@ -19,4 +21,3 @@ clean:
 	@rm $(TARGET)
 
 .PHONY: all run clean
-
