@@ -1,21 +1,19 @@
 #ifndef FRUIT_H
 #define FRUIT_H
 
+#include <utility>
 
 class Fruit
 {
     private:
         char design;
-        int xPosition; // TODO: Change to pair
-        int yPosition; // TODO: Change to pair
+        std::pair<int, int> coordinate;
     
     public:
         Fruit();
         char getDesign();
-        int getXposition();
-        int getYposition();
-        void setXposition(int x);
-        void setYposition(int y);
+        std::pair<int, int> getCoordinate();
+        void setCoordinate(int x, int y);
 };
 
 

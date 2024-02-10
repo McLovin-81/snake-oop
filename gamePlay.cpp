@@ -115,8 +115,8 @@ int GamePlay::getRandomNum(int range)
 
 bool GamePlay::checkIfEaten()
 {
-    if (board->getSnake()->getCoordinateVector()[0].first == board->getFruit()->getXposition()
-        && board->getSnake()->getCoordinateVector()[0].second == board->getFruit()->getYposition())
+    if (board->getSnake()->getCoordinateVector()[0].first == board->getFruit()->getCoordinate().first
+            && board->getSnake()->getCoordinateVector()[0].second == board->getFruit()->getCoordinate().second)
     {
         return true;
     }
@@ -126,8 +126,7 @@ bool GamePlay::checkIfEaten()
 
 void GamePlay::doWhenEaten()
 {
-    board->getFruit()->setXposition(getRandomNum(board->getWidth()));
-    board->getFruit()->setYposition(getRandomNum(board->getHeight()));
+    board->getFruit()->setCoordinate(getRandomNum(board->getWidth()), getRandomNum(board->getHeight()));
 
     board->increaseScore();
 

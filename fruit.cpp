@@ -7,15 +7,9 @@ Fruit::Fruit()
 }
 
 
-int Fruit::getXposition()
+std::pair<int, int> Fruit::getCoordinate()
 {
-    return this-> xPosition;
-}
-
-
-int Fruit::getYposition()
-{
-    return this-> yPosition;
+    return this->coordinate;
 }
 
 
@@ -25,13 +19,7 @@ char Fruit::getDesign()
 }
 
 
-void Fruit::setXposition(int x)
+void Fruit::setCoordinate(int x, int y)
 {
-    this->xPosition = x;
-}
-
-
-void Fruit::setYposition(int y)
-{
-    this->yPosition = y;
+    this->coordinate = std::make_pair(x, y);
 }

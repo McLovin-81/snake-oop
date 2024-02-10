@@ -10,8 +10,7 @@ GameBoard::GameBoard()
     snake = new Snake();
     fruit = new Fruit();
     snake->setNewCoordinate(width / 2, height / 2);
-    fruit->setXposition(width - 5); // Start position | TODO: Need random number
-    fruit->setYposition(height - 3); // Start position | TODO: Need random number
+    fruit->setCoordinate(width - 5, height - 3); // Start position | TODO: Need random number
 }
 
 
@@ -57,6 +56,7 @@ void GameBoard::draw()
     initscr();
     noecho();
     nodelay(stdscr, true); // Make getch non-blocking
+
     bool snakeFound;
     bool fruitPrinted;
 
@@ -90,7 +90,7 @@ void GameBoard::draw()
                     }
                 }
 
-                if (i == fruit->getYposition() && j == fruit->getXposition())
+                if (i == fruit->getCoordinate().second && j == fruit->getCoordinate().first)
                 {
                     printw("%c", fruit->getDesign());
                     fruitPrinted = true;
@@ -117,6 +117,7 @@ void GameBoard::draw()
 
     printw("Score: %d", this->score);
     printw("\n");
+
 
     // Print some information. Can be deleted later
     printw("Direction: %d, Old direction: %d", snake->getDirection(), snake->getOldDirection()); // TODO: Delete
