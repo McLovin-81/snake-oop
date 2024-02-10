@@ -79,6 +79,19 @@ void GamePlay::gameOverScreen()
     std::cout << "-----------------\n";
 }
 
+// TODO: Add direction check
+void GamePlay::detectCollisionDelay()
+{
+    std::pair<int, int> snakeHead = board->getSnake()->getCoordinateVector()[0];
+    Direction snakeDirection = board->getSnake()->getDirection();
+
+    if ((snakeHead.first == 1 && snakeDirection == LEFT) || (snakeHead.first == board->getWidth() -2 && snakeDirection == RIGHT)||
+        (snakeHead.second == 0 && snakeDirection == UP)|| (snakeHead.second == board->getHeight() -1 && snakeDirection == DOWN))
+    {
+        napms(30);
+    }
+}
+
 
 void GamePlay::collision()
 {
@@ -86,6 +99,7 @@ void GamePlay::collision()
     std::pair<int, int> snakeHead = board->getSnake()->getCoordinateVector()[0];
     int snakeLength = board->getSnake()->getLength();
 
+    // TODO: change that shit
     if (board->getSnake()->getCoordinateVector()[0].first == 0 || board->getSnake()->getCoordinateVector()[0].first == board->getWidth() -1
         || board->getSnake()->getCoordinateVector()[0].second == -1 || board->getSnake()->getCoordinateVector()[0].second == board->getHeight())
     {
@@ -146,10 +160,11 @@ void GamePlay::gameLoop()
 {
     while (!this->gameOver) // TODO: try do while
     {
-        napms(80); // TODO: Put it in another place
         board->draw();
         Input::input(board->getSnake());
         runDirection();
+        napms(80); // TODO: Put it in another place
+        detectCollisionDelay();
         collision();
         if (checkIfEaten())
         {
