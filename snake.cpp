@@ -50,7 +50,7 @@ char Snake::getDesign()
 void Snake::setNewCoordinate(int x, int y)
 {
     coordinates.push_back(std::make_pair(x, y));
-    increaseLength();
+    //increaseLength();
 }
 
 

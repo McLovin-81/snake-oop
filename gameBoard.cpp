@@ -10,6 +10,7 @@ GameBoard::GameBoard()
     snake = new Snake();
     fruit = new Fruit();
     snake->setNewCoordinate(width / 2, height / 2);
+    snake->increaseLength();
     fruit->setCoordinate(width - 5, height - 3); // Start position | TODO: Need random number
 }
 

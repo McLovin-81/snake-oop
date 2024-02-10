@@ -131,6 +131,8 @@ void GamePlay::doWhenEaten()
     board->increaseScore();
 
     board->getSnake()->setNewCoordinate(board->getSnake()->getCoordinateVector().back().first, board->getSnake()->getCoordinateVector().back().second);
+
+    board->getSnake()->increaseLength();
 }
 
 
