@@ -19,6 +19,7 @@ class GamePlay
         GamePlay();
         void runDirection();
         void gameOverScreen();
+        void detectCollisionDelay();
         void collision();
         int getRandomNum(int range);
         bool checkIfEaten();

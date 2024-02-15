@@ -79,6 +79,34 @@ void GamePlay::gameOverScreen()
     std::cout << "-----------------\n";
 }
 
+// TODO: delay for own body collision
+void GamePlay::detectCollisionDelay()
+{
+    std::vector<std::pair<int, int> > coordinates = board->getSnake()->getCoordinateVector();
+    std::pair<int, int> snakeHead = board->getSnake()->getCoordinateVector()[0];
+    Direction snakeDirection = board->getSnake()->getDirection();
+    int snakeLength = board->getSnake()->getLength();
+
+    if ((snakeHead.first == 1 && snakeDirection == LEFT) || (snakeHead.first == board->getWidth() -2 && snakeDirection == RIGHT)||
+        (snakeHead.second == 0 && snakeDirection == UP)|| (snakeHead.second == board->getHeight() -1 && snakeDirection == DOWN))
+    {
+        napms(150);
+    }
+
+/*
+    if (snakeLength >= 5)
+    {
+        for (int i = 4; i < snakeLength -1; i++)
+        {
+            if ((snakeHead.first == coordinates[i].first -1  && snakeDirection == LEFT) || snakeHead.first == coordinates[i].first +1 && snakeDirection == RIGHT)
+            {
+                napms(150);
+            }
+        }
+    }
+*/
+}
+
 
 void GamePlay::collision()
 {
@@ -86,8 +114,7 @@ void GamePlay::collision()
     std::pair<int, int> snakeHead = board->getSnake()->getCoordinateVector()[0];
     int snakeLength = board->getSnake()->getLength();
 
-    if (board->getSnake()->getCoordinateVector()[0].first == 0 || board->getSnake()->getCoordinateVector()[0].first == board->getWidth() -1
-        || board->getSnake()->getCoordinateVector()[0].second == -1 || board->getSnake()->getCoordinateVector()[0].second == board->getHeight())
+    if (snakeHead.first == 0 || snakeHead.first == board->getWidth() -1 || snakeHead.second == -1 || snakeHead.second == board->getHeight())
     {
         gameOver = true;
     }
@@ -146,12 +173,13 @@ void GamePlay::scoreScreen()
 
 void GamePlay::gameLoop()
 {
-    while (!this->gameOver) // TODO: try do while
+    while (!this->gameOver)
     {
-        napms(80); // TODO: Put it in another place
         board->draw();
+        detectCollisionDelay();
         Input::input(board->getSnake());
         runDirection();
+        napms(80);
         collision();
         if (checkIfEaten())
         {
