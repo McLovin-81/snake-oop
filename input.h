@@ -1,9 +1,7 @@
 #ifndef INPUT_H
 #define INPUT_H
 
-#include "gameBoard.h"
-
-#include <iostream>
+#include "view.h" // TODO: 
 
 
 class Input

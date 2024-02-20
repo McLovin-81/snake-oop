@@ -2,31 +2,26 @@
 #define GAME_PLAY_H
 
 #include <random>
+#include <iostream>
 
-#include "gameBoard.h"
-#include "snake.cpp"
-#include "input.cpp"
-
+#include "ncurses.h" // Needed to napms()
 
 class GamePlay
 {
     private:
         bool gameOver;
 
-        GameBoard* board;
-
     public:
         GamePlay();
-        void runDirection();
+        void runDirection(Snake* snake);
         void gameOverScreen();
-        void detectCollisionDelay();
-        void collision();
+        void detectCollisionDelay(Snake* snake, GameBoard* gameBoard);
+        void collision(Snake* snake, GameBoard* gameBoard);
         int getRandomNum(int range);
-        bool checkIfEaten();
-        void doWhenEaten();
-        void scoreScreen();
-        
-        void gameLoop();
+        bool checkIfEaten(Snake* snake, Fruit* fruit);
+        void doWhenEaten(Snake* snake, Fruit* fruit, GameBoard* gameBoard);
+        void scoreScreen(GameBoard* gameBoard);
+        bool getGameOver();
 };
 
 #endif // GAME_PLAY_H
