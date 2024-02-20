@@ -1,12 +1,10 @@
-#include "gameBoard.cpp" // TODO: Why do i need this include?
-#include "gamePlay.cpp"
+#include "controller.cpp"
 
 
 int main()
 {
-    GamePlay* gamePlay = new GamePlay();
-
-    gamePlay->gameLoop();
+    Controller gameController;
+    gameController.gameLoop();
 
     return 0;
 }
