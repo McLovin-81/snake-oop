@@ -156,13 +156,7 @@ void GamePlay::doWhenEaten(Snake* snake, Fruit* fruit, GameBoard* gameBoard)
 
     gameBoard->increaseScore();
 
-<<<<<<< HEAD
-    board->getSnake()->setNewCoordinate(board->getSnake()->getCoordinateVector().back().first, board->getSnake()->getCoordinateVector().back().second);
-
-    board->getSnake()->increaseLength();
-=======
     snake->setNewCoordinate(snake->getCoordinateVector().back().first, snake->getCoordinateVector().back().second);
->>>>>>> separateGraphics
 }
 
 
