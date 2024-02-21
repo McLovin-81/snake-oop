@@ -8,10 +8,11 @@ void View::draw(GameBoard* gameBoard, Snake* snake, Fruit* fruit)
     noecho();
     nodelay(stdscr, true); // Make getch non-blocking
 
-    napms(60); // TODO: Is this the correct place?
+    napms(80); // TODO: Is this the correct place?
 
     bool snakeFound;
     bool fruitPrinted;
+    bool snakeHead = true;
 
     for (int i = 0; i < gameBoard->getWidth(); i++)
     {
@@ -37,7 +38,15 @@ void View::draw(GameBoard* gameBoard, Snake* snake, Fruit* fruit)
                 {
                     if (coordinate.first == j && coordinate.second == i)
                     {
-                        printw("%c", snake->getDesign());
+                        if (snakeHead == true)
+                        {
+                            printw("%c", snake->getDesign());
+                            snakeHead = false;
+                        }
+                        else
+                        {
+                            printw("%c", snake->getBodyDesign());
+                        }
                         snakeFound = true;
                         break;
                     }
@@ -68,7 +77,7 @@ void View::draw(GameBoard* gameBoard, Snake* snake, Fruit* fruit)
 
         refresh(); // Refresh the screen
 
-        //printw("Score: %d", this->score);
+        printw("Score: %d", gameBoard->getScore());
         printw("\n");
 
 
