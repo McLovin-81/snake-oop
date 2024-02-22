@@ -17,7 +17,6 @@ private:
     GameBoard* gameboard;
 
     GamePlay* gameplay;
-    //Input* input;
     View* view;
 
 public:

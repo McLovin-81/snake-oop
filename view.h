@@ -9,8 +9,14 @@
 class View
 {
     private:
+        WINDOW* gameWindow;
     public:
-        void draw(GameBoard* gameBoard, Snake* snake, Fruit* fruit);
+        View();
+        void createWindow(GameBoard* gameBoard);
+        void drawWindow();
+        void drawObjects(Snake* snake, Fruit* fruit);
+        void clearWindow();
+
 
 };
 

@@ -17,9 +17,14 @@ Controller::Controller()
 
 void Controller::gameLoop()
 {
+    view->createWindow(gameboard);
+    
     while(!gameplay->getGameOver())
     {
-        view->draw(gameboard, snake, fruit);
+        view->clearWindow();
+        view->drawObjects(snake, fruit);
+        view->drawWindow();
+        
         gameplay->detectCollisionDelay(snake, gameboard);
         Input::input(snake);
         gameplay->runDirection(snake);
