@@ -6,15 +6,13 @@ View::View()
     initscr();
     noecho();
     nodelay(stdscr, true); // Make getch non-blocking
-    curs_set(0); // Hide the cursor
-    // keypad(stdscr, TRUE); // Enable special keys (e.g., arrow keys) -> KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT
+    curs_set(false); // Hide the cursor
 }
 
 
 void View::createWindow(GameBoard* gameBoard)
 {
     this->gameWindow = newwin(gameBoard->getHeight(), gameBoard->getWidth(), 0, 0); // Create the game window
-
     this->hubWindow = newwin(5, gameBoard->getWidth(), gameBoard->getHeight(), 0);
 }
 

@@ -4,24 +4,23 @@
 #include "snake.cpp"
 #include "fruit.cpp"
 #include "gameBoard.cpp"
-
 #include "gamePlay.cpp"
 #include "input.cpp"
 #include "view.cpp"
 
+
 class Controller
 {
-private:
-    Snake* snake;
-    Fruit* fruit;
-    GameBoard* gameboard;
+    private:
+        Snake* snake;
+        Fruit* fruit;
+        GameBoard* gameboard;
+        GamePlay* gameplay;
+        View* view;
 
-    GamePlay* gameplay;
-    View* view;
-
-public:
-    Controller();
-    void gameLoop();
+    public:
+        Controller();
+        void gameLoop();
 };
 
 #endif // CONTROLLER_H

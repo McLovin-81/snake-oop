@@ -1,7 +1,7 @@
 #ifndef INPUT_H
 #define INPUT_H
 
-#include "view.h" // TODO: 
+#include "ncurses.h" // Needed to use getch()
 
 
 class Input

@@ -28,7 +28,6 @@ class Snake
         void setDirection(Direction direction);
         void setOldDirection(Direction direction);
         void setNewCoordinate(int x, int y);
-
         void increaseLength();
 };
 
