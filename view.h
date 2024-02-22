@@ -10,11 +10,12 @@ class View
 {
     private:
         WINDOW* gameWindow;
+        WINDOW* hubWindow;
     public:
         View();
         void createWindow(GameBoard* gameBoard);
         void drawWindow();
-        void drawObjects(Snake* snake, Fruit* fruit);
+        void drawObjects(Snake* snake, Fruit* fruit, GameBoard* gameBoard);
         void clearWindow();
 
 

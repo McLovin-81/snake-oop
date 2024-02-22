@@ -19,6 +19,8 @@ void Input::input(Snake* snake)
         case 'a':
             snake->setDirection(LEFT);
             break;
+        case 'p':
+            snake->setDirection(STOP);
         default:
             break;
     }

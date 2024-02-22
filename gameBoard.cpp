@@ -3,7 +3,7 @@
 
 GameBoard::GameBoard()
 {
-    width = 35;
+    width = 30;
     height = 10;
     score = 0;
 }

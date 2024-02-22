@@ -87,7 +87,7 @@ void GamePlay::detectCollisionDelay(Snake* snake, GameBoard* gameBoard)
     int snakeLength = snake->getLength();
 
     if ((snakeHead.first == 1 && snakeDirection == LEFT) || (snakeHead.first == gameBoard->getWidth() -2 && snakeDirection == RIGHT)||
-        (snakeHead.second == 0 && snakeDirection == UP)|| (snakeHead.second == gameBoard->getHeight() -1 && snakeDirection == DOWN))
+        (snakeHead.second == 1 && snakeDirection == UP)|| (snakeHead.second == gameBoard->getHeight() -2 && snakeDirection == DOWN))
     {
         napms(150);
     }
@@ -113,7 +113,7 @@ void GamePlay::collision(Snake* snake, GameBoard* gameBoard)
     std::pair<int, int> snakeHead = snake->getCoordinateVector()[0];
     int snakeLength = snake->getLength();
 
-    if (snakeHead.first == 0 || snakeHead.first == gameBoard->getWidth() -1 || snakeHead.second == -1 || snakeHead.second == gameBoard->getHeight())
+    if (snakeHead.first == 0 || snakeHead.first == gameBoard->getWidth() -1 || snakeHead.second == 0 || snakeHead.second == gameBoard->getHeight() -1)
     {
         gameOver = true;
     }

@@ -10,8 +10,8 @@ Controller::Controller()
     gameplay = new GamePlay();
     view = new View();
 
-    snake->setNewCoordinate(gameboard->getWidth() / 2, gameboard->getHeight() / 2);
-    fruit->setCoordinate(gameplay->getRandomNum(gameboard->getWidth()), gameplay->getRandomNum(gameboard->getHeight())); // Start position | TODO: Need random number
+    snake->setNewCoordinate(gameboard->getWidth() / 2, gameboard->getHeight() / 2); // Start position
+    fruit->setCoordinate(gameplay->getRandomNum(gameboard->getWidth()), gameplay->getRandomNum(gameboard->getHeight())); // Start position
 }
 
 
@@ -22,7 +22,7 @@ void Controller::gameLoop()
     while(!gameplay->getGameOver())
     {
         view->clearWindow();
-        view->drawObjects(snake, fruit);
+        view->drawObjects(snake, fruit, gameboard);
         view->drawWindow();
         
         gameplay->detectCollisionDelay(snake, gameboard);

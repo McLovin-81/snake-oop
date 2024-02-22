@@ -10,7 +10,7 @@ class Snake
 {
     private:
         char design;
-        char bodyDesign; // TODO: Use the body design
+        char bodyDesign;
         int length;
 
         Direction direction;
