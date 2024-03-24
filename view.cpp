@@ -1,51 +1,51 @@
 #include "view.h"
 
 
-View::View()
+View::View(Fruit* fruit, GameBoard* gameBoard)
 {
-    initscr();
-    noecho();
-    nodelay(stdscr, true); // Make getch non-blocking
-    curs_set(false); // Hide the cursor
-}
+    cellSize = 30;
 
-
-void View::createWindow(GameBoard* gameBoard)
-{
-    this->gameWindow = newwin(gameBoard->getHeight(), gameBoard->getWidth(), 0, 0); // Create the game window
-    this->hubWindow = newwin(5, gameBoard->getWidth(), gameBoard->getHeight(), 0);
-}
-
-
-void View::drawWindow()
-{
-    box(gameWindow, 0, 0); // Draw a box around the window
-    box(hubWindow, 0, 0);
-    wrefresh(gameWindow);
-    wrefresh(hubWindow);
-}
-
-
-void View::clearWindow()
-{
-    wclear(gameWindow);
-    wclear(hubWindow);
+    // Window is 2 * cellZise bigger than the gameboard.
+    InitWindow(gameBoard->getHeight() * cellSize + cellSize * 2, gameBoard->getWidth() * cellSize + cellSize * 2, "Snake Game");
+    SetTargetFPS(60);
+    
+    image = LoadImage("graphics/food.png");
+    texture = LoadTextureFromImage(image);
+    UnloadImage(image);
 }
 
 
 void View::drawObjects(Snake* snake, Fruit* fruit, GameBoard* gameBoard)
 {
-    napms(80); // TODO: Is this the correct place?
+    BeginDrawing();
+    ClearBackground(green);
 
+    // Draw snake
+    Rectangle segment;
     for (auto coordinatePair : snake->getCoordinateVector())
     {
-        mvwprintw(gameWindow, coordinatePair.second, coordinatePair.first, "%c", snake->getDesign());
+        segment = Rectangle{(float)coordinatePair.first * cellSize + cellSize, (float)coordinatePair.second * cellSize + cellSize, (float)cellSize, (float)cellSize};
+        DrawRectangleRounded(segment, 0.5, 6, BLUE);
     }
 
-    mvwprintw(gameWindow, fruit->getCoordinate().second, fruit->getCoordinate().first, "%c", fruit->getDesign());
+    // Draw board
+    segment = Rectangle{(float)cellSize, (float)cellSize, (float)gameBoard->getWidth() * cellSize, (float)gameBoard->getHeight() * cellSize};
+    DrawRectangleLinesEx(segment, 1, BLACK);
 
-    mvwprintw(hubWindow, 1, 1, "SCORE: %d", gameBoard->getScore());
+    // Draw fruit
+    DrawTexture(texture, fruit->getCoordinate().first * cellSize + cellSize, fruit->getCoordinate().second * cellSize + cellSize, WHITE);
 
-    wrefresh(gameWindow);
-    wrefresh(hubWindow);
+    EndDrawing();
 }
+
+
+View::~View()
+{
+    UnloadTexture(texture);
+}
+
+
+
+/**
+ * Check Video at min 36 to create a dealy independet of FPS()
+*/

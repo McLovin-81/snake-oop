@@ -1,25 +1,29 @@
 #ifndef VIEW_H
 #define VIEW_H
 
-#include <ncurses.h>
+
+#include <raylib.h>
 
 #include "snake.h" // Why is this needed?
 #include "fruit.h" // Why is this needed?
+#include "gameBoard.h"
 
+
+Color green = {173, 204, 96, 255};
 
 class View
 {
     private:
-        WINDOW* gameWindow;
-        WINDOW* hubWindow;
+        int cellSize;
+        int cellCount; // TODO: Do i need this?
+
+        Image image;
+        Texture2D texture;
 
     public:
-        View();
-        void createWindow(GameBoard* gameBoard);
-        void drawWindow();
+        View(Fruit* fruit, GameBoard* gameBoard);
         void drawObjects(Snake* snake, Fruit* fruit, GameBoard* gameBoard);
-        void clearWindow();
+        ~View();
 };
-
 
 #endif // VIEW_H

@@ -7,7 +7,7 @@ class GameBoard
     private:
         int height;
         int width;
-        int score;
+        int score; // TODO: Thats not the right place 
 
     public:
         GameBoard();

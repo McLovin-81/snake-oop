@@ -78,6 +78,7 @@ void GamePlay::gameOverScreen()
     std::cout << "-----------------\n";
 }
 
+
 // TODO: delay for own body collision
 void GamePlay::detectCollisionDelay(Snake* snake, GameBoard* gameBoard)
 {
@@ -89,7 +90,7 @@ void GamePlay::detectCollisionDelay(Snake* snake, GameBoard* gameBoard)
     if ((snakeHead.first == 1 && snakeDirection == LEFT) || (snakeHead.first == gameBoard->getWidth() -2 && snakeDirection == RIGHT)||
         (snakeHead.second == 1 && snakeDirection == UP)|| (snakeHead.second == gameBoard->getHeight() -2 && snakeDirection == DOWN))
     {
-        napms(150);
+        // napms(150); OLD
     }
 
 /*
@@ -113,11 +114,13 @@ void GamePlay::collision(Snake* snake, GameBoard* gameBoard)
     std::pair<int, int> snakeHead = snake->getCoordinateVector()[0];
     int snakeLength = snake->getLength();
 
-    if (snakeHead.first == 0 || snakeHead.first == gameBoard->getWidth() -1 || snakeHead.second == 0 || snakeHead.second == gameBoard->getHeight() -1)
+    // Agains walls
+    if (snakeHead.first == -1 || snakeHead.first == gameBoard->getWidth() || snakeHead.second == -1 || snakeHead.second == gameBoard->getHeight())
     {
         gameOver = true;
     }
 
+    // Agains body
     for (int i = 1; i < snakeLength -1; i++)
     {
         if (snakeHead == coordinates[i])
@@ -152,7 +155,30 @@ bool GamePlay::checkIfEaten(Snake* snake, Fruit* fruit)
 
 void GamePlay::doWhenEaten(Snake* snake, Fruit* fruit, GameBoard* gameBoard)
 {
-    fruit->setCoordinate(getRandomNum(gameBoard->getWidth()), getRandomNum(gameBoard->getHeight()));
+    // Check that the fruit position does not overlap with a snake position
+    bool fruitPositionOk = false;
+    int fruitXPosition;
+    int fruitYPosition;
+
+    while (!fruitPositionOk)
+    {
+        fruitXPosition = getRandomNum(gameBoard->getWidth());
+        fruitYPosition = getRandomNum(gameBoard->getHeight());
+
+        fruitPositionOk = true; // Assume the position is ok until we find an overlap
+
+        for (auto coordinatePair : snake->getCoordinateVector())
+        {
+            if (fruitXPosition == coordinatePair.first && fruitYPosition == coordinatePair.second)
+            {
+                fruitPositionOk = false; // Overlap found, set fruitPositionOk to false
+                break;
+            }
+        }
+    }
+    
+    // Set the fruit's coordinate after ensuring it doesn't overlap with the snake
+    fruit->setCoordinate(fruitXPosition, fruitYPosition);
 
     gameBoard->increaseScore();
 

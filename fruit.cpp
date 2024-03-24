@@ -4,6 +4,7 @@
 Fruit::Fruit()
 {
     this->design = 'F';
+    // this->texture = "graphics/food.png";
 }
 
 
@@ -23,3 +24,10 @@ void Fruit::setCoordinate(int x, int y)
 {
     this->coordinate = std::make_pair(x, y);
 }
+
+/*
+const char* Fruit::getTexture()
+{
+    return this->texture;
+}
+*/
