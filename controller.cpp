@@ -38,7 +38,6 @@ void Controller::gameLoop()
             elapsedTime = 0.0f;
         }
 
-        // gameplay->runDirection(snake);
         gameplay->collision(snake, gameboard);
 
         if (gameplay->checkIfEaten(snake, fruit))

@@ -4,7 +4,6 @@
 #include <random>
 #include <iostream>
 
-// #include "ncurses.h" // Needed to use napms()
 
 class GamePlay
 {

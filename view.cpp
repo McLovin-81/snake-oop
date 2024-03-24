@@ -43,9 +43,3 @@ View::~View()
 {
     UnloadTexture(texture);
 }
-
-
-
-/**
- * Check Video at min 36 to create a dealy independet of FPS()
-*/

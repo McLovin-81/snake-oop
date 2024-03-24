@@ -79,7 +79,7 @@ void GamePlay::gameOverScreen()
 }
 
 
-// TODO: delay for own body collision
+// TODO: No more working!
 void GamePlay::detectCollisionDelay(Snake* snake, GameBoard* gameBoard)
 {
     std::vector<std::pair<int, int> > coordinates = snake->getCoordinateVector();

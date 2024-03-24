@@ -1,10 +1,10 @@
 #include "snake.h"
 
-
+// TODO: Load snake image?
 Snake::Snake()
 {
-    design = 'O';
-    bodyDesign = 'o';
+    design = 'O'; // TODO: No more needed
+    bodyDesign = 'o'; // TODO: No more needed
     length = 0;
     direction = STOP;
     oldDirection = STOP;

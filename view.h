@@ -15,7 +15,6 @@ class View
 {
     private:
         int cellSize;
-        int cellCount; // TODO: Do i need this?
 
         Image image;
         Texture2D texture;
